@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+<body class="root">
+    <header class="header">
+        <img src="./images/header__logo.svg" alt="Логотип Место" class="header__logo">
+        <div class="header__line"></div>
+    </header>
+    <main>
+        <section class="profile">
+            <div class="profile__card">
+                <img src="./images/Avatar1.png" alt="Жак-Ив Кусто" class="profile__avatar">
+                <div class="profile__info">
+                    <div class="profile__name"><h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button"></button>
+                    </div>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+            </div>            
+            <button class="profile__add-button"></button>
+        </section>
+        <section class="cards">
+            <article class="card">
+                <img src="./images/kar.jpg" alt="Карачаевск" class="card__image">
+                <div class="card__info">  
+                    <h2 class="card__title">Карачаевск</h2>
+                    <button class="card__like-button"></button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./images/elb.png" alt="Эльбрус" class="card__image">
+                <div class="card__info">
+                    <h2 class="card__title">Гора Эльбрус</h2>
+                    <button class="card__like-button"></button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./images/domb.png" alt="Домбай" class="card__image">
+                <div class="card__info">
+                    <h2 class="card__title">Домбай</h2>
+                    <button class="card__like-button"></button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./images/elb.png" alt="Эльбрус" class="card__image">
+                <div class="card__info">
+                    <h2 class="card__title">Гора Эльбрус</h2>
+                    <button class="card__like-button"></button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./images/domb.png" alt="Домбай" class="card__image">
+                <div class="card__info">
+                    <h2 class="card__title">Домбай</h2>
+                    <button class="card__like-button"></button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="./images/kar.jpg" alt="Карачаевск" class="card__image">
+                <div class="card__info">
+                    <h2 class="card__title">Карачаево-Черкессия</h2>
+                    <button class="card__like-button"></button>
+                </div>
+            </article>
+        </section>        
+    </main>
+    <footer class="footer">
+        <p class="footer__author">&copy; 2021 Mesto Russia</p>
+    </footer>
+    <form class="popup">
+        <div class="popup__overlay"></div>
+        <div class="popup__content">
+            <button type="button" class="popup__close-button"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" class="popup__name">
+            <input type="text" class="popup__description">
+            <button type="submit" class="popup__save-button">Сохранить</button>
+        </div>
+    </form>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
