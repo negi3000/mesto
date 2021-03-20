@@ -9,15 +9,15 @@
 <body class="root">
     <header class="header">
         <img src="./images/header__logo.svg" alt="Логотип Место" class="header__logo">
-        <div class="header__line"></div>
     </header>
-    <main>
+    <main class="main">
         <section class="profile">
             <div class="profile__card">
                 <img src="./images/Avatar1.png" alt="Жак-Ив Кусто" class="profile__avatar">
                 <div class="profile__info">
-                    <div class="profile__name"><h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button"></button>
+                    <div class="profile__name">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button type="button" aria-label="Edit" class="profile__edit-button"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
@@ -29,7 +29,7 @@
                 <img src="./images/kar.jpg" alt="Карачаевск" class="card__image">
                 <div class="card__info">  
                     <h2 class="card__title">Карачаевск</h2>
-                    <button class="card__like-button"></button>
+                    <button type="button" class="card__like-button"></button>
                 </div>
             </article>
             <article class="card">
@@ -72,15 +72,15 @@
     <footer class="footer">
         <p class="footer__author">&copy; 2021 Mesto Russia</p>
     </footer>
-    <form class="popup">        
-        <div class="popup__content">
+    <div class="popup">        
+        <form class="popup__content" name="popup">
             <button type="button" class="popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__name">
-            <input type="text" class="popup__description">
+            <input type="text" class="popup__input popup__input_type_name" name="popup-name">
+            <input type="text" class="popup__input popup__input_type_job" name="popup-job">
             <button type="submit" class="popup__save-button">Сохранить</button>
-        </div>
-    </form>
+        </form>
+    </div>
     <script src="./scripts/script.js"></script>
 </body>
 </html>
