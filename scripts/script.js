@@ -16,6 +16,13 @@ const popupPhoto = document.querySelector('.popup-photo-modal');
 const popupImage = popupPhoto.querySelector('.popup__photo');
 const popupPhotoTitle = popupPhoto.querySelector('.popup__description');
 const popupPhotoCloseBtn = popupPhoto.querySelector('.popup__close-button');
+const cardTemplate = document.querySelector('.card-template').content;
+
+// const popup = document.querySelector('.popup');
+
+// function closePopup() {
+//   popup.classList.remove('popup_visible')
+// }
 
 function popupEditToggle() {
     popupEdit.classList.toggle('popup_visible');
@@ -57,8 +64,7 @@ const initialCards = [
     }
   ];
 
-function insertCard(item) {
-    const cardTemplate = document.querySelector('.card-template').content;
+function createCard(item) {    
     const card = cardTemplate.cloneNode(true);
     const cardTitle = card.querySelector('.card__title');    
     const cardLikeButton = card.querySelector('.card__like-button');
@@ -76,8 +82,8 @@ function insertCard(item) {
     }
 
     cardImage.addEventListener('click', popupPhotoHandler);
-    cardLikeButton.addEventListener('click', cardLikeHandler);
-    cardDeleteButton.addEventListener('click', cardDeleteHandler);
+    cardLikeButton.addEventListener('click', handleCardLike);
+    cardDeleteButton.addEventListener('click', handleCardDelete);
     
     return card;
 }
@@ -88,45 +94,45 @@ function closePopupPhoto(evt){
   popupPhoto.classList.remove('popup_visible');
 }
 
-function cardDeleteHandler(evt){
+function handleCardDelete(evt){
   evt.target.closest('.card').remove()
 }
 
-function cardLikeHandler(evt) {
+function handleCardLike(evt) {
   evt.target.classList.toggle('card__like-button_active')
 }
 
 initialCards.map( item =>{
-  const initialCard = insertCard(item)
+  const initialCard = createCard(item)
   cards.append(initialCard)
 })
 
-function popupAddToggle () {
+function togglePopupAdd () {
     popupAdd.classList.toggle('popup_visible');
 }
 
-function formAddSubmitHandler (evt) {
+function handleFormAddSubmit (evt) {
     evt.preventDefault();
-    const newCard = insertCard({
+    const newCard = createCard({
       name: popupAddName.value,
       link: popupAddLink.value})
 
     cards.prepend(newCard)
 
-    popupAddToggle()
+    togglePopupAdd()
 }
 
 // const cardLikeButton = cards.querySelector('.card__like-button');
 // const cardDeleteButton = cards.querySelector('.card__delete-button');
 
 // cardLikeButton.addEventListener('click', console.log('c'));
-// cardDeleteButton.addEventListener('click', cardDeleteHandler);
+// cardDeleteButton.addEventListener('click', handleCardDelete);
 
 popupPhotoCloseBtn.addEventListener('click', closePopupPhoto);
-popupAdd.addEventListener('submit', formAddSubmitHandler)
+popupAdd.addEventListener('submit', handleFormAddSubmit)
 
-openPopupAddBtn.addEventListener('click', popupAddToggle);
-closePopupAddBtn.addEventListener('click', popupAddToggle);
+openPopupAddBtn.addEventListener('click', togglePopupAdd);
+closePopupAddBtn.addEventListener('click', togglePopupAdd);
 
 openPopupEditBtn.addEventListener('click', popupEditToggle);
 closePopupEditBtn.addEventListener('click', popupEditToggle);
