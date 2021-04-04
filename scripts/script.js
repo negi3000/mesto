@@ -18,14 +18,17 @@ const popupPhotoTitle = popupPhoto.querySelector('.popup__description');
 const popupPhotoCloseBtn = popupPhoto.querySelector('.popup__close-button');
 const cardTemplate = document.querySelector('.card-template').content;
 
-// const popup = document.querySelector('.popup');
 
-// function closePopup() {
-//   popup.classList.remove('popup_visible')
-// }
+function closePopup(item) {
+  item.classList.remove('popup_visible')
+}
+
+function openPopup(item) {
+  item.classList.add('popup_visible')
+}
 
 function popupEditToggle() {
-    popupEdit.classList.toggle('popup_visible');
+    openPopup(popupEdit);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 }
@@ -34,7 +37,7 @@ function formEditSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popupEditToggle();
+    closePopup(popupEdit);
 }
 
 const initialCards = [
@@ -78,7 +81,7 @@ function createCard(item) {
       popupImage.src= item.link;
       popupImage.alt = item.name;
       popupPhotoTitle.textContent = item.name;
-      popupPhoto.classList.add('popup_visible');  
+      openPopup(popupPhoto) 
     }
 
     cardImage.addEventListener('click', popupPhotoHandler);
@@ -86,12 +89,6 @@ function createCard(item) {
     cardDeleteButton.addEventListener('click', handleCardDelete);
     
     return card;
-}
-
-
-
-function closePopupPhoto(evt){
-  popupPhoto.classList.remove('popup_visible');
 }
 
 function handleCardDelete(evt){
@@ -107,9 +104,9 @@ initialCards.map( item =>{
   cards.append(initialCard)
 })
 
-function togglePopupAdd () {
-    popupAdd.classList.toggle('popup_visible');
-}
+// function togglePopupAdd () {
+//     popupAdd.classList.toggle('popup_visible');
+// }
 
 function handleFormAddSubmit (evt) {
     evt.preventDefault();
@@ -119,7 +116,7 @@ function handleFormAddSubmit (evt) {
 
     cards.prepend(newCard)
 
-    togglePopupAdd()
+    closePopup(popupAdd)
 }
 
 // const cardLikeButton = cards.querySelector('.card__like-button');
@@ -128,12 +125,12 @@ function handleFormAddSubmit (evt) {
 // cardLikeButton.addEventListener('click', console.log('c'));
 // cardDeleteButton.addEventListener('click', handleCardDelete);
 
-popupPhotoCloseBtn.addEventListener('click', closePopupPhoto);
+popupPhotoCloseBtn.addEventListener('click',() => closePopup(popupPhoto));
 popupAdd.addEventListener('submit', handleFormAddSubmit)
 
-openPopupAddBtn.addEventListener('click', togglePopupAdd);
-closePopupAddBtn.addEventListener('click', togglePopupAdd);
+openPopupAddBtn.addEventListener('click', () => openPopup(popupAdd));
+closePopupAddBtn.addEventListener('click', () => closePopup(popupAdd));
 
 openPopupEditBtn.addEventListener('click', popupEditToggle);
-closePopupEditBtn.addEventListener('click', popupEditToggle);
+closePopupEditBtn.addEventListener('click', () => closePopup(popupEdit));
 formElement.addEventListener('submit', formEditSubmitHandler);
