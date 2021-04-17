@@ -2,7 +2,7 @@
     margin-top: 50px;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 20px 17px;
 }
@@ -13,7 +13,7 @@
     }
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 529px){
     .cards{
         grid-template-columns: 1fr;        
     }

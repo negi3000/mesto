@@ -23,29 +23,32 @@ const formAdd = popupAdd.querySelector('.popup__form_type_add');
 function closePopup(item) {
   item.classList.remove('popup_visible');
   document.removeEventListener('keydown', closePopupEsc);
-  document.removeEventListener('click', closePopupOverlay);
-  if (item.classList.contains('popup-add-place')){
-    formAdd.reset()
-  }
+  document.removeEventListener('click', closePopupOverlay);  
 }
 
 function openPopup(item) {
   item.classList.add('popup_visible');
   document.addEventListener('keydown', closePopupEsc);
-  document.addEventListener('click', closePopupOverlay);
-  clearInputError()
+  document.addEventListener('click', closePopupOverlay);  
 }
 
-function popupEditToggle() {
-    openPopup(popupEdit);
+function handlePopupAdd() {
+  formAdd.reset();
+  clearInputError();
+  openPopup(popupAdd);
+}
+
+function togglePopupEdit() {    
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
+    clearInputError();
+    openPopup(popupEdit);
 }
 
-function formEditSubmitHandler (evt) {
+function handleFormEditSubmit (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
+    profileJob.textContent = jobInput.value;    
     closePopup(popupEdit);
 }
 
@@ -151,9 +154,9 @@ function handleFormAddSubmit (evt) {
 popupPhotoCloseBtn.addEventListener('click',() => closePopup(popupPhoto));
 popupAdd.addEventListener('submit', handleFormAddSubmit)
 
-openPopupAddBtn.addEventListener('click', () => openPopup(popupAdd));
+openPopupAddBtn.addEventListener('click', handlePopupAdd);
 closePopupAddBtn.addEventListener('click', () => closePopup(popupAdd));
 
-openPopupEditBtn.addEventListener('click', popupEditToggle);
+openPopupEditBtn.addEventListener('click', togglePopupEdit);
 closePopupEditBtn.addEventListener('click', () => closePopup(popupEdit));
-formElement.addEventListener('submit', formEditSubmitHandler);
+formElement.addEventListener('submit', handleFormEditSubmit);
