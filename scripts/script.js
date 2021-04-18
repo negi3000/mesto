@@ -34,21 +34,21 @@ function openPopup(item) {
 
 function handlePopupAdd() {
   formAdd.reset();
-  clearInputError();
+  clearInputError(validationConfig);
   openPopup(popupAdd);
 }
 
 function togglePopupEdit() {    
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-    clearInputError();
+    clearInputError(validationConfig);
     openPopup(popupEdit);
 }
 
 function handleFormEditSubmit (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;    
+    profileJob.textContent = jobInput.value;
     closePopup(popupEdit);
 }
 
