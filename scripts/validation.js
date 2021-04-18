@@ -23,7 +23,7 @@ const hideInputError = (formElement, inputElement, validationConfig) => {
   inputElement.classList.remove(validationConfig.inputErrorClass)  
 }
 
-const clearInputError = () =>{ 
+const clearInputError = (validationConfig) =>{ 
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach(formElement => {
     const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
